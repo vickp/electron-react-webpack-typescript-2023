@@ -5,6 +5,7 @@ module.exports = {
    */
   entry: ['./src/main/app.ts'],
   // Put your normal webpack config below here
+  externals: ['serialport'],
   module: {
     rules: require('./webpack.rules'),
   },

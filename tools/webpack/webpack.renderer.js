@@ -2,6 +2,7 @@ const rules = require('./webpack.rules');
 const plugins = require('./webpack.plugins');
 
 module.exports = {
+  externals: [],
   module: {
     rules,
   },
