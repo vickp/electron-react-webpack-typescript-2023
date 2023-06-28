@@ -11,6 +11,8 @@
  */
 
 import { BrowserWindow, ipcMain, shell } from 'electron';
+import { SerialPort } from 'serialport';
+import { info as logInfo } from 'electron-log'
 
 export const registerTitlebarIpc = (mainWindow: BrowserWindow) => {
   ipcMain.handle('window-minimize', () => {
@@ -31,6 +33,21 @@ export const registerTitlebarIpc = (mainWindow: BrowserWindow) => {
 
   ipcMain.handle('window-close', () => {
     mainWindow.close();
+  });
+
+  ipcMain.handle('connect', () => {
+    const port = new SerialPort({
+      path: 'COM1', 
+      baudRate: 9600
+    })
+
+    logInfo(port.settings);
+    
+    port.write('Hello!');
+
+    port.once('data', (chunk) => {
+      logInfo("DATA :: ", chunk)
+    })
   });
 
   ipcMain.handle('web-undo', () => {

@@ -16,6 +16,9 @@ const titlebarContext = {
   exit() {
     ipcRenderer.invoke('window-close');
   },
+  connect() {
+    ipcRenderer.invoke('connect');
+  },
   undo() {
     ipcRenderer.invoke('web-undo');
   },

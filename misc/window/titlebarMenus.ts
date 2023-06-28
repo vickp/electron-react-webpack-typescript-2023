@@ -37,6 +37,11 @@ const titlebarMenus: TitlebarMenu[] = [
     name: 'Edit',
     items: [
       {
+        name: 'connect',
+        action: 'connect',
+        shortcut: 'Ctrl+C+S',
+      },
+      {
         name: 'Undo',
         action: 'undo',
         shortcut: 'Ctrl+Z',
